@@ -1,3 +1,10 @@
+import { HiOutlineHome, HiOutlineUsers } from "react-icons/hi";
+import {
+  HiOutlineCalendarDays,
+  HiOutlineCog6Tooth,
+  HiOutlineHomeModern,
+} from "react-icons/hi2";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const NavList = styled.ul`
@@ -6,7 +13,7 @@ const NavList = styled.ul`
   gap: 0.8rem;
 `;
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -20,7 +27,6 @@ const Link = styled.a`
     transition: all 0.3s;
   }
 
-  /* This works because react-router places the active class on the active NavLink */
   &:hover,
   &:active,
   &.active:link,
@@ -44,3 +50,29 @@ const Link = styled.a`
     color: var(--color-brand-600);
   }
 `;
+
+function MainNav() {
+  const navItems = [
+    { path: "/dashboard", icon: HiOutlineHome, name: "Home" },
+    { path: "/bookings", icon: HiOutlineCalendarDays, name: "Bookings" },
+    { path: "/cabins", icon: HiOutlineHomeModern, name: "Cabins" },
+    { path: "/users", icon: HiOutlineUsers, name: "Users" },
+    { path: "/settings", icon: HiOutlineCog6Tooth, name: "Settings" },
+  ];
+
+  return (
+    <nav>
+      <NavList>
+        {navItems.map((item) => (
+          <li key={item.name}>
+            <StyledNavLink to={item.path}>
+              <item.icon /> <span>{item.name}</span>
+            </StyledNavLink>
+          </li>
+        ))}
+      </NavList>
+    </nav>
+  );
+}
+
+export default MainNav;
