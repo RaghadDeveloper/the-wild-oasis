@@ -178,6 +178,11 @@ img {
   /* For dark mode */
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
 }
+::-webkit-scrollbar {  width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-grey-0); }
+::-webkit-scrollbar-thumb { background: var(--color-brand-500); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-brand-600); }
+
 `;
 
 export default GlobalStyles;
